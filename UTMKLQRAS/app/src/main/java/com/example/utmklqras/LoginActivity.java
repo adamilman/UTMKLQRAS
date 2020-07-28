@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText ePassword;
     private Button eLogin;
     private TextView eAttemptInfo;
+    
+    private ImageView test;
 
     private String Username = "Admin";
     private String Password = "12345678";

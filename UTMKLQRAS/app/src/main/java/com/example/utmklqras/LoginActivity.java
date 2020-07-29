@@ -26,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     boolean isValid = false;
     private int counter = 5;
 
+    private TextView userRegistration;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         ePassword = findViewById(R.id.etPassword);
         eLogin = findViewById(R.id.btnLogin);
         eAttemptInfo = findViewById(R.id.tvAttemptsInfo);
+        userRegistration = findViewById(R.id.tvRegister);
 
         eLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        userRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
     }

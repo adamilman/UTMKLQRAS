@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40452555858",
+    "firebase_url": "https://utmkl-qras-app.firebaseio.com",
+    "project_id": "utmkl-qras-app",
+    "storage_bucket": "utmkl-qras-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40452555858:android:b7d16221438f6fa2404b8b",
+        "android_client_info": {
+          "package_name": "com.example.utmklqras"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40452555858-dv4r90t5lirmc66iqljlbpi0l7af9mh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2MFQP8NWjkqu73hCXx9r0ctUdadjdvNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40452555858-dv4r90t5lirmc66iqljlbpi0l7af9mh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -49,7 +49,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             if(task.isSuccessful()) {
 
                                 Toast.makeText(RegistrationActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
+                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
 
                             }else{
 
@@ -90,7 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         if(name.isEmpty() || password.isEmpty() || email.isEmpty()) {
 
-            Toast.makeText(this, "Please enter all the detils", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
              result = true;
             }

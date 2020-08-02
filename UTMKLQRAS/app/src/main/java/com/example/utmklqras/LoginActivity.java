@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView userRegistration;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private TextView forgotPassword;
 
 
     boolean isValid = false;
@@ -39,10 +39,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Name = (EditText)findViewById(R.id.etName);
-        Password = (EditText)findViewById(R.id.etPassword);
+        Password = (EditText)findViewById(R.id.etPasswordEmail);
         Info = (TextView)findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
         userRegistration = (TextView)findViewById(R.id.tvRegister);
+        forgotPassword = findViewById(R.id.tvForgotPassword);
 
         Info.setText("No of attempts remaining: 5");
 
@@ -67,6 +68,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,PasswordActivity.class ));
             }
         });
     }

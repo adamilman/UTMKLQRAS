@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -45,20 +46,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
                             if(task.isSuccessful()) {
-
-                                Toast.makeText(RegistrationActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                                sendEmailVerification();
 
                             }else{
-
                                 Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                                 }
-
                         }
                     });
-
                 }
             }
         });
@@ -96,6 +91,25 @@ public class RegistrationActivity extends AppCompatActivity {
             }
 
          return result;
+        }
+
+        private void sendEmailVerification(){
+            FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+            if(firebaseUser!= null){
+                firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(RegistrationActivity.this, "Succesfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
+                            firebaseAuth.signOut();
+                            finish();
+                            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                        }else{
+                            Toast.makeText(RegistrationActivity.this, "Verification mail hasn't been sent!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
         }
     }
 

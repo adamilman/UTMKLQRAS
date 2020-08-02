@@ -81,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+                    //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    checkEmailVerification();
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -95,5 +95,19 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void checkEmailVerification(){
+        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        Boolean emailflag = firebaseUser.isEmailVerified();
+
+        if(emailflag){
+            finish();
+            startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+        }else{
+            Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
+
     }
 }

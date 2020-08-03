@@ -1,41 +1,41 @@
 package com.example.utmklqras;
 
 public class UserProfile {
-    public String Age;
-    public String Email;
-    public String Name;
+    public String userAge;
+    public String userEmail;
+    public String userName;
 
     public UserProfile(){
 
     }
 
     public UserProfile(String userAge, String userEmail, String userName) {
-        this.Age = userAge;
-        this.Email = userEmail;
-        this.Name = userName;
+        this.userAge = userAge;
+        this.userEmail = userEmail;
+        this.userName = userName;
     }
 
-    public String getAge() {
-        return Age;
+    public String getUserAge() {
+        return userAge;
     }
 
-    public void setAge(String age) {
-        Age = age;
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
     }
 
-    public String getEmail() {
-        return Email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public String getName() {
-        return Name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

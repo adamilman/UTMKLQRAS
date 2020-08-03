@@ -37,13 +37,15 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case R.id.menuprofile:
+                startActivity(new Intent(HomePageActivity.this, ProfileActivity.class));
+                return true;
             case R.id.menulogout:{
                 Logout();
             }
-            case R.id.menuprofile:
-                startActivity(new Intent(HomePageActivity.this, ProfileActivity.class));
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private void Logout(){

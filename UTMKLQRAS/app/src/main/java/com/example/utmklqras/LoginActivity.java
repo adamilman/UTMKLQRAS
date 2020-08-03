@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,PasswordActivity.class ));
+                startActivity(new Intent(LoginActivity.this, PasswordActivity.class ));
             }
         });
     }
@@ -106,16 +106,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkEmailVerification(){
-        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-        Boolean emailflag = firebaseUser.isEmailVerified();
+            FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+            Boolean emailflag = firebaseUser.isEmailVerified();
 
-        if(emailflag){
-            finish();
-            startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
-        }else{
-            Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
-            firebaseAuth.signOut();
-        }
+            //startActivity(new Intent(LoginActivity.this, HomePageActivity.class ));
+
+            if(emailflag){
+                finish();
+                startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+            }
+            else{
+                Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
+                firebaseAuth.signOut();
+            }
 
     }
 }

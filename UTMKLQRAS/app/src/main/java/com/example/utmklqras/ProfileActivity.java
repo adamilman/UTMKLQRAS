@@ -44,14 +44,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfile userProfile = snapshot.getValue(UserProfile.class);
-                profileName.setText(userProfile.getName());
-                profileAge.setText(userProfile.getAge());
-                profileEmail.setText(userProfile.getEmail());
+                profileName.setText("Name: " + userProfile.getUserName());
+                profileAge.setText("Age: " + userProfile.getUserAge());
+                profileEmail.setText("Email: " + userProfile.getUserEmail());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfileActivity.this,error.getCode(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
 
             }
         });

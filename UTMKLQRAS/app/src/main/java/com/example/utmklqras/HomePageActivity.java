@@ -40,6 +40,8 @@ public class HomePageActivity extends AppCompatActivity {
             case R.id.menulogout:{
                 Logout();
             }
+            case R.id.menuprofile:
+                startActivity(new Intent(HomePageActivity.this, ProfileActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

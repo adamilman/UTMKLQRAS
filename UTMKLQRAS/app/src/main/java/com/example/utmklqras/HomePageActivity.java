@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,36 +25,29 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         firebaseAuth = FirebaseAuth.getInstance();
+    }
 
-        logout = (Button) findViewById(R.id.btnLogout);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menulogout:{
                 Logout();
             }
-        });
+        }
+        return super.onOptionsItemSelected(item);
     }
+
     private void Logout(){
         firebaseAuth.signOut();
         finish();
         startActivity(new Intent(HomePageActivity.this, LoginActivity.class));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.logoutMenu:{
-                Logout();
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

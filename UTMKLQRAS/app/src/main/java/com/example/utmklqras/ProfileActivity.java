@@ -3,7 +3,10 @@ package com.example.utmklqras;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,10 +23,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ImageView profilePic;
     private TextView profileName, profileAge, profileEmail;
-    private Button profileUpdate;
+    private Button profileUpdate, changePassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
         profileAge= findViewById(R.id.tvProfileAge);
         profileEmail = findViewById(R.id.tvProfileEmail);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
+        changePassword = findViewById(R.id.btnChangePassword);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -43,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserProfile userProfile = snapshot.getValue(UserProfile.class);
+                UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 profileName.setText("Name: " + userProfile.getUserName());
                 profileAge.setText("Age: " + userProfile.getUserAge());
                 profileEmail.setText("Email: " + userProfile.getUserEmail());
@@ -55,5 +60,29 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        profileUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, UpdateProfileActivity.class));
+            }
+        });
+
+        changePassword.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(ProfileActivity.this, UpdatePasswordActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

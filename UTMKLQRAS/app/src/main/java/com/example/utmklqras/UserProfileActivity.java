@@ -1,15 +1,15 @@
 package com.example.utmklqras;
 
-public class UserProfile {
+public class UserProfileActivity {
     public String userAge;
     public String userEmail;
     public String userName;
 
-    public UserProfile(){
+    public UserProfileActivity(){
 
     }
 
-    public UserProfile(String userAge, String userEmail, String userName) {
+    public UserProfileActivity(String userAge, String userEmail, String userName) {
         this.userAge = userAge;
         this.userEmail = userEmail;
         this.userName = userName;

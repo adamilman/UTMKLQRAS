@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".ProfileActivity">
 
     <ImageView
         android:id="@+id/ivProfilePic"
         android:layout_width="177dp"
         android:layout_height="102dp"
+        android:src="@drawable/abstract_low_poly_background_vector_illustration_570244"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109"
-        android:src ="@drawable/abstract_low_poly_background_vector_illustration_570244" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <TextView
         android:id="@+id/tvProfileName"

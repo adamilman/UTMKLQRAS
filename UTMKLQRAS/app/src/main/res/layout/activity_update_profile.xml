@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateProfileActivity">
+    android:background="@drawable/back"
+    tools:context=".UpdateProfileActivity"
+    android:theme="@style/EditTextHint">
 
     <EditText
         android:id="@+id/etEmailUpdate"
@@ -36,6 +38,7 @@
         android:id="@+id/etNameUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/input_shape"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"

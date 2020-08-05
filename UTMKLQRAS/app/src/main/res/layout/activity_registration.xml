@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    android:background="@drawable/back"
+    tools:context=".RegistrationActivity"
+    android:theme="@style/EditTextHint">
 
     <EditText
         android:id="@+id/etAge"
@@ -91,10 +93,10 @@
         android:id="@+id/ivProfile"
         android:layout_width="110dp"
         android:layout_height="110dp"
+        android:src="@drawable/abstract_low_poly_background_vector_illustration_570244"
         app:layout_constraintBottom_toTopOf="@+id/etUserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527"
-        android:src="@drawable/abstract_low_poly_background_vector_illustration_570244" />
+        app:layout_constraintVertical_bias="0.527" />
 </androidx.constraintlayout.widget.ConstraintLayout>

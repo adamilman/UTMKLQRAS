@@ -29,7 +29,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private ImageView userProfilePic;
     String email, name, age, password;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +84,13 @@ public class RegistrationActivity extends AppCompatActivity {
         userLogin = findViewById(R.id.tvUserLogin);
         userAge = findViewById(R.id.etAge);
         userProfilePic = findViewById(R.id.ivProfile);
+
+        userName.setHintTextColor(getResources().getColor(R.color.white));
+        userPassword.setHintTextColor(getResources().getColor(R.color.white));
+        userEmail.setHintTextColor(getResources().getColor(R.color.white));
+        userAge.setHintTextColor(getResources().getColor(R.color.white));
+
+
     }
 
     private Boolean validate() {

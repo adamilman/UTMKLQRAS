@@ -30,6 +30,8 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         update = findViewById(R.id.btnUpdatePassword);
         newPassword = findViewById(R.id.etNewPassword);
 
+        newPassword.setHintTextColor(getResources().getColor(R.color.white));
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -45,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = findViewById(R.id.tvForgotPassword);
 
+        Name.setHintTextColor(getResources().getColor(R.color.white));
+        Password.setHintTextColor(getResources().getColor(R.color.white));
+
         Info.setText("No of attempts remaining: 5");
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword){
 
-        progressDialog.setMessage("testtesttest");
+        progressDialog.setMessage("Welcome to UTMKLQRAS");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

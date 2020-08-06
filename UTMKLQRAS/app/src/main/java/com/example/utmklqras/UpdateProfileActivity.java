@@ -34,6 +34,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
         newUserAge = findViewById(R.id.etAgeUpdate);
         save = findViewById(R.id.btnSave);
 
+        newUserName.setHintTextColor(getResources().getColor(R.color.white));
+        newUserEmail.setHintTextColor(getResources().getColor(R.color.white));
+        newUserAge.setHintTextColor(getResources().getColor(R.color.white));
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -46,8 +50,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 newUserName.setText(userProfile.getUserName());
-                newUserAge.setText(userProfile.getUserAge());
                 newUserEmail.setText(userProfile.getUserEmail());
+                newUserAge.setText(userProfile.getUserAge());
             }
 
             @Override

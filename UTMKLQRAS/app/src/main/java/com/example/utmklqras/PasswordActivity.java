@@ -30,6 +30,8 @@ public class PasswordActivity extends AppCompatActivity {
         resetPassword = findViewById(R.id.btnPasswordReset);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        passwordEmail.setHintTextColor(getResources().getColor(R.color.white));
+
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

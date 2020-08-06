@@ -47,15 +47,15 @@ public class ProfileActivity extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(DataSnapshot snapshot) {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
-                profileName.setText("Name: " + userProfile.getUserName());
-                profileAge.setText("Age: " + userProfile.getUserAge());
-                profileEmail.setText("Email: " + userProfile.getUserEmail());
+                profileName.setText(userProfile.getUserName());
+                profileEmail.setText(userProfile.getUserEmail());
+                profileAge.setText(userProfile.getUserAge());
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(DatabaseError error) {
                 Toast.makeText(ProfileActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
 
             }

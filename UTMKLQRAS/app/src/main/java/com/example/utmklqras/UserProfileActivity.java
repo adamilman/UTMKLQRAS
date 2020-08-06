@@ -1,26 +1,25 @@
 package com.example.utmklqras;
 
 public class UserProfileActivity {
-    public String userAge;
-    public String userEmail;
     public String userName;
+    public String userEmail;
+    public String userAge;
 
     public UserProfileActivity(){
-
     }
 
     public UserProfileActivity(String userAge, String userEmail, String userName) {
-        this.userAge = userAge;
-        this.userEmail = userEmail;
         this.userName = userName;
-    }
-
-    public String getUserAge() {
-        return userAge;
-    }
-
-    public void setUserAge(String userAge) {
+        this.userEmail = userEmail;
         this.userAge = userAge;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserEmail() {
@@ -31,11 +30,11 @@ public class UserProfileActivity {
         this.userEmail = userEmail;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserAge() {
+        return userAge;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
     }
 }

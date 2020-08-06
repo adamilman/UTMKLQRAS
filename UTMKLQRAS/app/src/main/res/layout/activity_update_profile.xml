@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".UpdateProfileActivity"
-    android:theme="@style/EditTextHint">
+    tools:context=".UpdateProfileActivity">
 
     <EditText
         android:id="@+id/etEmailUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/input_shape"
         android:ems="10"
+        android:padding="15dp"
         android:hint="Email"
+        android:textColorHint="#FFFFFF"
+        android:textColor="@android:color/white"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,16 +35,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.096"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/fang" />
 
     <EditText
         android:id="@+id/etNameUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -51,11 +57,15 @@
 
     <EditText
         android:id="@+id/etAgeUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/input_shape"
         android:ems="10"
         android:hint="Age"
+        android:textColorHint="#FFFFFF"
         android:inputType="number"
+        android:padding="15dp"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -65,9 +75,11 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/btn_shape"
         android:text="Save"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

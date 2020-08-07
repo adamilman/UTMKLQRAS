@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,14 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private TextView forgotPassword;
-
+    private Spinner UserType;
 
     boolean isValid = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         Name = (EditText)findViewById(R.id.etName);
         Password = (EditText)findViewById(R.id.etPasswordEmail);
@@ -44,6 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         Login = (Button)findViewById(R.id.btnLogin);
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = findViewById(R.id.tvForgotPassword);
+        UserType = findViewById(R.id.spnrUserType);
+
+        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
+        UserType.setAdapter(adapter);
 
         Name.setHintTextColor(getResources().getColor(R.color.white));
         Password.setHintTextColor(getResources().getColor(R.color.white));
@@ -57,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user != null){
             finish();
-            startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomePageAdminActivity.class));
         }
 
         Login.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +101,21 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     checkEmailVerification();
+                    String item = UserType.getSelectedItem().toString();
+                    if (item.equals("Admin")) {
+                        Intent intent = new Intent(LoginActivity.this, HomePageAdminActivity.class);
+                        startActivity(intent);
+                    } else if (item.equals("Lecturer")) {
+                        Intent intent = new Intent(LoginActivity.this, HomePageLecturerActivity.class);
+                        startActivity(intent);
+                    } else if (item.equals("Student")) {
+                        Intent intent = new Intent(LoginActivity.this, HomePageStudentActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
+                    }
                 }
+
                 else{
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     counter--;
@@ -116,12 +137,10 @@ public class LoginActivity extends AppCompatActivity {
 
             if(emailflag){
                 finish();
-                startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
             }
             else{
                 Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
                 firebaseAuth.signOut();
             }
-
     }
 }

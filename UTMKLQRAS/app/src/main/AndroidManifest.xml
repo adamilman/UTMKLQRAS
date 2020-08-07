@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdatePasswordActivity" ></activity>
+        <activity android:name=".HomePageStudentActivity"></activity>
+        <activity android:name=".HomePageLecturerActivity" />
+        <activity android:name=".UpdatePasswordActivity" />
         <activity android:name=".UpdateProfileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".HomePageActivity" />
+        <activity android:name=".HomePageAdminActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProgressActivity"
+        <activity
+            android:name=".ProgressActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

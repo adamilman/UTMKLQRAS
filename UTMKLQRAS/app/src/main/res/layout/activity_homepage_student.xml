@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".HomePageActivity">
+    tools:context=".HomePageStudentActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/contrail_one"
         android:gravity="center_horizontal"
-        android:text="Welcome\nto\nQRAS"
+        android:text="Student"
         android:textColor="#FFFFFF"
         android:textSize="56sp"
         app:layout_constraintBottom_toBottomOf="parent"

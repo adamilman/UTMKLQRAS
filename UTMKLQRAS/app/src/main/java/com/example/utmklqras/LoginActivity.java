@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
+                        finish();
                     }
                 }
 

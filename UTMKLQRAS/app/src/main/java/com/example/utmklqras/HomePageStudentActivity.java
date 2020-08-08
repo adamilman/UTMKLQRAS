@@ -27,7 +27,7 @@ public class HomePageStudentActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.menu_student, menu);
         return true;
     }
 
@@ -35,7 +35,7 @@ public class HomePageStudentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuprofile:
-                startActivity(new Intent(HomePageStudentActivity.this, ProfileActivity.class));
+                startActivity(new Intent(HomePageStudentActivity.this, ProfileStudentActivity.class));
                 return true;
             case R.id.menulogout:{
                 Logout();

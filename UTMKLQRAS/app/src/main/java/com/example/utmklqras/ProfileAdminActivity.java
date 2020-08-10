@@ -32,7 +32,7 @@ import com.google.firebase.storage.StorageReference;
 public class ProfileAdminActivity extends AppCompatActivity {
 
     private ImageView profilePic;
-    private TextView profileName, profileAge, profileEmail;
+    private TextView profileName, profilePhoneNo, profileEmail;
     private Button profileUpdate, changePassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -44,7 +44,7 @@ public class ProfileAdminActivity extends AppCompatActivity {
 
         profilePic = findViewById(R.id.ivProfilePic);
         profileName = findViewById(R.id.tvProfileName);
-        profileAge= findViewById(R.id.tvProfileAge);
+        profilePhoneNo = findViewById(R.id.tvProfilePhoneNo);
         profileEmail = findViewById(R.id.tvProfileEmail);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
@@ -85,7 +85,7 @@ public class ProfileAdminActivity extends AppCompatActivity {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 profileName.setText(userProfile.getUserName());
                 profileEmail.setText(userProfile.getUserEmail());
-                profileAge.setText(userProfile.getUserAge());
+                profilePhoneNo.setText(userProfile.getUserPhoneNo());
             }
 
             @Override

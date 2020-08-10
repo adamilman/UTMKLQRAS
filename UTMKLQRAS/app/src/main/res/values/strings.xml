@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">UTMKLQRAS</string>
     <string-array name="usertype">
-        <item><font fgcolor="#ffffff">User Type</font></item>
         <item><font fgcolor="#ffffff">Admin</font></item>
         <item><font fgcolor="#ffffff">Lecturer</font></item>
         <item><font fgcolor="#ffffff">Student</font></item>

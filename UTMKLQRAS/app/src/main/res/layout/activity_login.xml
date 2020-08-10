@@ -125,17 +125,4 @@
         app:layout_constraintTop_toBottomOf="@+id/etPasswordEmail"
         app:layout_constraintVertical_bias="0.372" />
 
-    <Spinner
-        android:id="@+id/spnrUserType"
-        android:layout_width="180dp"
-        android:layout_height="54dp"
-        android:background="@drawable/input_shape"
-        android:padding="15dp"
-        android:popupBackground="#2f2f2f"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordEmail"
-        app:layout_constraintVertical_bias="0.073" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

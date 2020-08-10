@@ -22,6 +22,7 @@
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
+        android:hint="Name"
         android:padding="15dp"
         android:textColor="#FFFFFFFF"
         android:textSize="18sp"
@@ -33,10 +34,11 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <TextView
-        android:id="@+id/tvProfileAge"
+        android:id="@+id/tvProfilePhoneNo"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
+        android:hint="Phone No."
         android:padding="15dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -53,6 +55,7 @@
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
+        android:hint="Email"
         android:padding="15dp"
         android:textColor="#FFFFFFFF"
         android:textSize="18sp"

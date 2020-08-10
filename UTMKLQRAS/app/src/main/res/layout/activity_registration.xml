@@ -7,6 +7,20 @@
     android:background="@drawable/back"
     tools:context=".RegistrationActivity">
 
+    <Spinner
+        android:id="@+id/spnrUserType"
+        android:layout_width="203dp"
+        android:layout_height="49dp"
+        android:background="@drawable/input_shape"
+        android:clipToPadding="false"
+        android:padding="15dp"
+        android:popupBackground="#2f2f2f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNo"
+        app:layout_constraintVertical_bias="0.112" />
+
     <TextView
         android:id="@+id/tvUserLogin2"
         android:layout_width="wrap_content"
@@ -35,10 +49,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
+        app:layout_constraintVertical_bias="0.329" />
 
     <EditText
         android:id="@+id/etUserEmail"
@@ -74,15 +88,15 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserEmail"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <EditText
-        android:id="@+id/etAge"
+        android:id="@+id/etPhoneNo"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="Age"
+        android:hint="Phone No."
         android:inputType="number"
         android:padding="15dp"
         android:textColor="@android:color/white"
@@ -92,7 +106,7 @@
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUserPassword"
-        app:layout_constraintVertical_bias="0.104" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <TextView
         android:id="@+id/tvUserLogin"
@@ -117,19 +131,20 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUserPassword"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintTop_toBottomOf="@+id/spnrUserType"
+        app:layout_constraintVertical_bias="0.207" />
 
     <ImageView
         android:id="@+id/ivProfile"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="222dp"
+        android:layout_height="195dp"
         android:src="@drawable/userpng"
         app:layout_constraintBottom_toTopOf="@+id/etUserName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.225" />
 </androidx.constraintlayout.widget.ConstraintLayout>

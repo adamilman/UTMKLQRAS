@@ -35,7 +35,7 @@ import java.io.IOException;
 
 public class UpdateProfileAdminActivity extends AppCompatActivity {
 
-    private EditText newUserName, newUserEmail, newUserAge;
+    private EditText newUserName, newUserEmail, newUserPhoneNo, newUserPassword, selectedUserType;
     private Button save, savePic;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -69,7 +69,8 @@ public class UpdateProfileAdminActivity extends AppCompatActivity {
 
         newUserName = findViewById(R.id.etNameUpdate);
         newUserEmail = findViewById(R.id.etEmailUpdate);
-        newUserAge = findViewById(R.id.etAgeUpdate);
+        newUserPhoneNo = findViewById(R.id.etPhoneNoUpdate);
+        newUserPassword = findViewById(R.id.etUserPassword);
         save = findViewById(R.id.btnSave);
         setProfilePic = (ImageView)findViewById(R.id.ivProfileUpdate);
         progressDialog = new ProgressDialog(this);
@@ -77,7 +78,8 @@ public class UpdateProfileAdminActivity extends AppCompatActivity {
 
         newUserName.setHintTextColor(getResources().getColor(R.color.white));
         newUserEmail.setHintTextColor(getResources().getColor(R.color.white));
-        newUserAge.setHintTextColor(getResources().getColor(R.color.white));
+        newUserPhoneNo.setHintTextColor(getResources().getColor(R.color.white));
+        newUserPassword.setHintTextColor(getResources().getColor(R.color.white));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -118,7 +120,10 @@ public class UpdateProfileAdminActivity extends AppCompatActivity {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 newUserName.setText(userProfile.getUserName());
                 newUserEmail.setText(userProfile.getUserEmail());
-                newUserAge.setText(userProfile.getUserAge());
+                newUserPhoneNo.setText(userProfile.getUserPhoneNo());
+                newUserPassword.setText(userProfile.getUserPassword());
+                selectedUserType.setText(userProfile.getSelectedUserType());
+
             }
 
             @Override
@@ -168,10 +173,12 @@ public class UpdateProfileAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = newUserName.getText().toString();
-                String age = newUserAge.getText().toString();
+                String phoneNo = newUserPhoneNo.getText().toString();
                 String email = newUserEmail.getText().toString();
+                String password = newUserPassword.getText().toString();
+                String userType = selectedUserType.getText().toString();
 
-                UserProfileActivity userProfile = new UserProfileActivity(age, email, name);
+                UserProfileActivity userProfile = new UserProfileActivity(phoneNo, email, name, password, userType);
 
                 databaseReference.setValue(userProfile);
                 Toast.makeText(UpdateProfileAdminActivity.this,"Updated Successfully!", Toast.LENGTH_SHORT).show();

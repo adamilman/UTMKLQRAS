@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.103" />
 
     <EditText
-        android:id="@+id/etAgeUpdate"
+        android:id="@+id/etPhoneNoUpdate"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
@@ -96,6 +96,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAgeUpdate" />
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNoUpdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

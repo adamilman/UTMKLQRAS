@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +24,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword, userEmail, userAge;
+    private EditText userName, userPassword, userEmail, userPhoneNo;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String email, name, age, password;
+    String email, name, phoneNo, password, selectedUserType;
+    private Spinner UserType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +85,18 @@ public class RegistrationActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.etUserEmail);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userAge = findViewById(R.id.etAge);
+        userPhoneNo = findViewById(R.id.etPhoneNo);
         userProfilePic = findViewById(R.id.ivProfile);
+        UserType = findViewById(R.id.spnrUserType);
+
 
         userName.setHintTextColor(getResources().getColor(R.color.white));
         userPassword.setHintTextColor(getResources().getColor(R.color.white));
         userEmail.setHintTextColor(getResources().getColor(R.color.white));
-        userAge.setHintTextColor(getResources().getColor(R.color.white));
+        userPhoneNo.setHintTextColor(getResources().getColor(R.color.white));
 
+        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
+        UserType.setAdapter(adapter);
 
     }
 
@@ -100,9 +107,11 @@ public class RegistrationActivity extends AppCompatActivity {
         name = userName.getText().toString();
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
-        age = userAge.getText().toString();
+        phoneNo = userPhoneNo.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty()) {
+
+
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || phoneNo.isEmpty()) {
 
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
@@ -134,10 +143,12 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         private void sendUserData(){
+            selectedUserType = UserType.getSelectedItem().toString();
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-            UserProfileActivity userProfile = new UserProfileActivity(age, email, name);
+            UserProfileActivity userProfile = new UserProfileActivity(phoneNo, email, name, password, selectedUserType);
             myRef.setValue(userProfile);
+
         }
 
     }

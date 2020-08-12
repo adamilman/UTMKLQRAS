@@ -20,11 +20,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,8 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private TextView forgotPassword;
-    private EditText userType;
-    private FirebaseDatabase firebaseDatabase;
+    private Spinner UserType;
 
     boolean isValid = false;
 
@@ -53,6 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         Login = (Button)findViewById(R.id.btnLogin);
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = findViewById(R.id.tvForgotPassword);
+        UserType = findViewById(R.id.spnrUserType);
+
+        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
+        UserType.setAdapter(adapter);
 
         Name.setHintTextColor(getResources().getColor(R.color.white));
         Password.setHintTextColor(getResources().getColor(R.color.white));
@@ -103,8 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     checkEmailVerification();
-                    retrieveUserType();
-                    String item = userType.toString();
+                    String item = UserType.getSelectedItem().toString();
                     if (item.equals("Admin")) {
                         Intent intent = new Intent(LoginActivity.this, HomePageAdminActivity.class);
                         startActivity(intent);
@@ -118,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
                         finish();
                     }
-
                 }
 
                 else{
@@ -135,35 +131,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkEmailVerification(){
-            FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-            Boolean emailflag = firebaseUser.isEmailVerified();
+        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        Boolean emailflag = firebaseUser.isEmailVerified();
 
-            //startActivity(new Intent(LoginActivity.this, HomePageActivity.class ));
+        //startActivity(new Intent(LoginActivity.this, HomePageActivity.class ));
 
-            if(emailflag){
-                finish();
-            }
-            else{
-                Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
-                firebaseAuth.signOut();
-            }
-    }
-    private void retrieveUserType(){
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
-                userType.setText(userProfile.getSelectedUserType());
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(LoginActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        if(emailflag){
+            finish();
+        }
+        else{
+            Toast.makeText(this,"Verify your email",Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
     }
 }

@@ -69,12 +69,12 @@
         app:layout_constraintVertical_bias="0.103" />
 
     <EditText
-        android:id="@+id/etPhoneNoUpdate"
+        android:id="@+id/etAgeUpdate"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="Phone No."
+        android:hint="Age"
         android:inputType="number"
         android:padding="15dp"
         android:textColor="@android:color/white"
@@ -96,6 +96,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneNoUpdate" />
+        app:layout_constraintTop_toBottomOf="@+id/etAgeUpdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

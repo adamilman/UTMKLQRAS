@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword, userEmail, userPhoneNo;
+    private EditText userName, userPassword, userEmail, userAge;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String email, name, phoneNo, password, selectedUserType;
-    private Spinner UserType;
+    String email, name, age, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,18 +82,14 @@ public class RegistrationActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.etUserEmail);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userPhoneNo = findViewById(R.id.etPhoneNo);
+        userAge = findViewById(R.id.etAge);
         userProfilePic = findViewById(R.id.ivProfile);
-        UserType = findViewById(R.id.spnrUserType);
-
 
         userName.setHintTextColor(getResources().getColor(R.color.white));
         userPassword.setHintTextColor(getResources().getColor(R.color.white));
         userEmail.setHintTextColor(getResources().getColor(R.color.white));
-        userPhoneNo.setHintTextColor(getResources().getColor(R.color.white));
+        userAge.setHintTextColor(getResources().getColor(R.color.white));
 
-        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
-        UserType.setAdapter(adapter);
 
     }
 
@@ -107,49 +100,45 @@ public class RegistrationActivity extends AppCompatActivity {
         name = userName.getText().toString();
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
-        phoneNo = userPhoneNo.getText().toString();
+        age = userAge.getText().toString();
 
-
-
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || phoneNo.isEmpty()) {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty()) {
 
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
-             result = true;
-            }
-
-         return result;
+            result = true;
         }
 
-        private void sendEmailVerification(){
-            FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-            if(firebaseUser!= null){
-                firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            sendUserData();
-                            Toast.makeText(RegistrationActivity.this, "Succesfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
-                            firebaseAuth.signOut();
-                            finish();
-                            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                        }
-                        else{
-                            Toast.makeText(RegistrationActivity.this, "Verification mail hasn't been sent!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        }
-
-        private void sendUserData(){
-            selectedUserType = UserType.getSelectedItem().toString();
-            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-            UserProfileActivity userProfile = new UserProfileActivity(phoneNo, email, name, password, selectedUserType);
-            myRef.setValue(userProfile);
-
-        }
-
+        return result;
     }
+
+    private void sendEmailVerification(){
+        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!= null){
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        sendUserData();
+                        Toast.makeText(RegistrationActivity.this, "Succesfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                    }
+                    else{
+                        Toast.makeText(RegistrationActivity.this, "Verification mail hasn't been sent!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void sendUserData(){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        UserProfileActivity userProfile = new UserProfileActivity(age, email, name);
+        myRef.setValue(userProfile);
+    }
+
+}
 

@@ -23,59 +23,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.903" />
 
-    <TextView
-        android:id="@+id/day"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
 
-    <TextView
-        android:id="@+id/month"
-        android:layout_width="340dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
 
-    <DigitalClock
-        android:layout_width="274dp"
-        android:layout_height="92dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardviewmyprofile1"
         android:layout_width="322dp"
         android:layout_height="195dp"
         android:background="@drawable/cardviewmypofile"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardviewtime1"
         app:layout_constraintVertical_bias="0.412">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,10 +88,69 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <androidx.cardview.widget.CardView
-        android:layout_width="66dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="25dp" />
+        android:id="@+id/cardviewtime1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/cardviewtime"
+        app:layout_constraintBottom_toTopOf="@+id/cardviewmyprofile1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="@drawable/cardviewtime"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="80dp">
+
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#525252"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.593" />
+
+            <TextView
+                android:id="@+id/month"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#525252"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.814" />
+
+            <DigitalClock
+                android:layout_width="274dp"
+                android:layout_height="92dp"
+                android:gravity="center"
+                android:textColor="#525252"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.025" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

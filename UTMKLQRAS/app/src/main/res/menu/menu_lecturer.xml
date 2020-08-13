@@ -9,15 +9,15 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/menulogout"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="Logout"/>
-
-    <item
         android:id="@+id/menuhomepagelecturer"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="Homepage"/>
+
+    <item
+        android:id="@+id/menulogout"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Logout"/>
 
 </menu>

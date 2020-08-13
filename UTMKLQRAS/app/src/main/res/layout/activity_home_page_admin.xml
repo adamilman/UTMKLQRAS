@@ -127,4 +127,10 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="25dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

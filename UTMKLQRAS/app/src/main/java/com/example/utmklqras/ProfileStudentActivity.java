@@ -98,7 +98,7 @@ public class ProfileStudentActivity extends AppCompatActivity {
         profileUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileStudentActivity.this, UpdateProfileAdminActivity.class));
+                startActivity(new Intent(ProfileStudentActivity.this, UpdateProfileStudentActivity.class));
             }
         });
 

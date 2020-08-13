@@ -37,7 +37,7 @@
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textColor="@android:color/white"

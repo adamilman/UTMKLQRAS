@@ -46,7 +46,7 @@
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:textColor="@android:color/white"

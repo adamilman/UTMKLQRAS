@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <TextView
-        android:id="@+id/tvProfileAge"
+        android:id="@+id/tvProfileMatric"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/input_shape"

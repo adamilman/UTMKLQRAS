@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
     <color name="light_gray">#58616E</color>
+    <color name="color1">#64b3f4</color>
+    <color name="color2">#c2e59c</color>
 </resources>

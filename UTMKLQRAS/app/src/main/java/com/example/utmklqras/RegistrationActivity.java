@@ -1,6 +1,7 @@
 package com.example.utmklqras;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,18 +23,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword, userEmail, userAge;
+    private EditText userName, userPassword, userEmail, userMatric;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String email, name, age, password;
+    String email, name, matric, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         setupUIViews();
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
+        }
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -80,15 +86,15 @@ public class RegistrationActivity extends AppCompatActivity {
         userName = findViewById(R.id.etUserName);
         userPassword = findViewById(R.id.etUserPassword);
         userEmail = findViewById(R.id.etUserEmail);
+        userMatric = findViewById(R.id.etMatric);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userAge = findViewById(R.id.etAge);
         userProfilePic = findViewById(R.id.ivProfile);
 
         userName.setHintTextColor(getResources().getColor(R.color.white));
         userPassword.setHintTextColor(getResources().getColor(R.color.white));
         userEmail.setHintTextColor(getResources().getColor(R.color.white));
-        userAge.setHintTextColor(getResources().getColor(R.color.white));
+        userMatric.setHintTextColor(getResources().getColor(R.color.white));
 
 
     }
@@ -100,9 +106,9 @@ public class RegistrationActivity extends AppCompatActivity {
         name = userName.getText().toString();
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
-        age = userAge.getText().toString();
+        matric = userMatric.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty()) {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || matric.isEmpty()) {
 
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
@@ -136,7 +142,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfileActivity userProfile = new UserProfileActivity(age, email, name);
+        UserProfileActivity userProfile = new UserProfileActivity(matric, email, name);
         myRef.setValue(userProfile);
     }
 

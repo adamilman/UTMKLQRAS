@@ -1,6 +1,7 @@
 package com.example.utmklqras;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -35,7 +36,7 @@ import java.io.IOException;
 
 public class UpdateProfileStudentActivity extends AppCompatActivity {
 
-    private EditText newUserName, newUserEmail, newUserAge;
+    private EditText newUserName, newUserEmail, newUserMatric;
     private Button save, savePic;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -67,9 +68,14 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile_student);
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
+        }
+
         newUserName = findViewById(R.id.etNameUpdate);
         newUserEmail = findViewById(R.id.etEmailUpdate);
-        newUserAge = findViewById(R.id.etAgeUpdate);
+        newUserMatric = findViewById(R.id.etMatricUpdate);
         save = findViewById(R.id.btnSave);
         setProfilePic = (ImageView)findViewById(R.id.ivProfileUpdate);
         progressDialog = new ProgressDialog(this);
@@ -77,7 +83,7 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
 
         newUserName.setHintTextColor(getResources().getColor(R.color.white));
         newUserEmail.setHintTextColor(getResources().getColor(R.color.white));
-        newUserAge.setHintTextColor(getResources().getColor(R.color.white));
+        newUserMatric.setHintTextColor(getResources().getColor(R.color.white));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -118,7 +124,7 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 newUserName.setText(userProfile.getUserName());
                 newUserEmail.setText(userProfile.getUserEmail());
-                newUserAge.setText(userProfile.getUserAge());
+                newUserMatric.setText(userProfile.getUserMatric());
             }
 
             @Override
@@ -168,10 +174,10 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = newUserName.getText().toString();
-                String age = newUserAge.getText().toString();
+                String matric = newUserMatric.getText().toString();
                 String email = newUserEmail.getText().toString();
 
-                UserProfileActivity userProfile = new UserProfileActivity(age, email, name);
+                UserProfileActivity userProfile = new UserProfileActivity(matric, email, name);
 
                 databaseReference.setValue(userProfile);
                 Toast.makeText(UpdateProfileStudentActivity.this,"Updated Successfully!", Toast.LENGTH_SHORT).show();

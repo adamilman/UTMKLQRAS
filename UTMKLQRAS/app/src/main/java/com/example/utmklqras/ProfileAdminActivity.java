@@ -1,6 +1,7 @@
 package com.example.utmklqras;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -32,7 +33,7 @@ import com.google.firebase.storage.StorageReference;
 public class ProfileAdminActivity extends AppCompatActivity {
 
     private ImageView profilePic;
-    private TextView profileName, profileAge, profileEmail;
+    private TextView profileName, profileMatric, profileEmail;
     private Button profileUpdate, changePassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -42,9 +43,14 @@ public class ProfileAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_admin);
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
+        }
+
         profilePic = findViewById(R.id.ivProfilePic);
         profileName = findViewById(R.id.tvProfileName);
-        profileAge= findViewById(R.id.tvProfileAge);
+        profileMatric= findViewById(R.id.tvProfileMatric);
         profileEmail = findViewById(R.id.tvProfileEmail);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
@@ -85,7 +91,7 @@ public class ProfileAdminActivity extends AppCompatActivity {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
                 profileName.setText(userProfile.getUserName());
                 profileEmail.setText(userProfile.getUserEmail());
-                profileAge.setText(userProfile.getUserAge());
+                profileMatric.setText(userProfile.getUserMatric());
             }
 
             @Override

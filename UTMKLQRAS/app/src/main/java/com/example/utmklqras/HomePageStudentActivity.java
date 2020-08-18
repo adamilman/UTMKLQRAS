@@ -1,5 +1,6 @@
 package com.example.utmklqras;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -32,29 +33,34 @@ public class HomePageStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage_student);
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
+        }
+
         firebaseAuth = FirebaseAuth.getInstance();
 
-        underlined1 = findViewById(R.id.textView6);
-        myProfile = findViewById(R.id.cardviewmyprofile1);
+        //underlined1 = findViewById(R.id.textView6);
+        myProfile = findViewById(R.id.myProfile);
 
-        month = findViewById(R.id.month);
-        day = findViewById(R.id.day);
+        //month = findViewById(R.id.month);
+        //day = findViewById(R.id.day);
 
-        Date currentTime = Calendar.getInstance().getTime();
-        String formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime);
+        //Date currentTime = Calendar.getInstance().getTime();
+        //String formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime);
 
-        String[] splitDate = formattedDate.split(",");
+        //String[] splitDate = formattedDate.split(",");
 
-        Log.d("myLOG", currentTime.toString());
-        Log.d("myLOG", formattedDate);
+        //Log.d("myLOG", currentTime.toString());
+        //Log.d("myLOG", formattedDate);
 
-        month.setText(splitDate[1]);
-        day.setText(splitDate[0]);
+        //month.setText(splitDate[1]);
+        //day.setText(splitDate[0]);
 
-        Log.d("myLOG", splitDate[0].trim());
-        Log.d("myLOG", splitDate[1].trim());
+        //Log.d("myLOG", splitDate[0].trim());
+        //Log.d("myLOG", splitDate[1].trim());
 
-        underlined1.setText(Html.fromHtml("<u>My Profile</u>"));
+        //underlined1.setText(Html.fromHtml("<u>My Profile</u>"));
 
         myProfile.setOnClickListener(new View.OnClickListener() {
             @Override

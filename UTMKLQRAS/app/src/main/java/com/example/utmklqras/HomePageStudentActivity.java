@@ -96,5 +96,4 @@ public class HomePageStudentActivity extends AppCompatActivity {
         finish();
         startActivity(new Intent(HomePageStudentActivity.this, LoginActivity.class));
     }
-
 }

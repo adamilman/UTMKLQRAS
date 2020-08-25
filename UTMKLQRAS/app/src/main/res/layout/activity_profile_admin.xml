@@ -12,40 +12,12 @@
         android:layout_width="230dp"
         android:layout_height="230dp"
         android:src="@drawable/userpng"
-        app:layout_constraintBottom_toTopOf="@+id/tvProfileName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvProfileName"
-        android:layout_width="336dp"
-        android:layout_height="54dp"
-        android:background="@drawable/input_shape"
-        android:padding="15dp"
-        android:textColor="#FFFFFFFF"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
-
-    <TextView
-        android:id="@+id/tvProfileMatric"
-        android:layout_width="336dp"
-        android:layout_height="54dp"
-        android:background="@drawable/input_shape"
-        android:padding="15dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.073" />
 
     <TextView
         android:id="@+id/tvProfileEmail"
@@ -55,28 +27,60 @@
         android:ems="10"
         android:padding="15dp"
         android:textColor="#FFFFFFFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
 
-    <Button
-        android:id="@+id/btnProfileUpdate"
+    <TextView
+        android:id="@+id/tvProfileName"
         android:layout_width="336dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="108dp"
-        android:background="@drawable/btn_shape"
-        android:text="Edit"
+        android:background="@drawable/input_shape"
+        android:padding="15dp"
         android:textColor="#FFFFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593" />
+
+    <TextView
+        android:id="@+id/tvProfileMatric"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/input_shape"
+        android:padding="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709" />
+
+    <Spinner
+        android:id="@+id/spnrEditType"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/btn_shape"
+        android:padding="15dp"
+        android:entries="@array/edittype"
+        android:textSize="16sp"
+        android:spinnerMode="dialog"
+        android:popupBackground="#2f2f2f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.831" />
 
     <Button
         android:id="@+id/btnChangePassword"
@@ -85,10 +89,11 @@
         android:background="@drawable/btn_shape"
         android:text="Change Password"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfileUpdate"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
 </androidx.constraintlayout.widget.ConstraintLayout>

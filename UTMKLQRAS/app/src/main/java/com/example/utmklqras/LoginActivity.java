@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,19 +49,21 @@ public class LoginActivity extends AppCompatActivity {
 
         Name = (EditText)findViewById(R.id.etName);
         Password = (EditText)findViewById(R.id.etPasswordEmail);
-        Info = (TextView)findViewById(R.id.tvInfo);
+        //Info = (TextView)findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = findViewById(R.id.tvForgotPassword);
         UserType = findViewById(R.id.spnrUserType);
 
-        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_mainspinner, getResources().getStringArray(R.array.usertype));
+
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
         UserType.setAdapter(adapter);
 
         Name.setHintTextColor(getResources().getColor(R.color.white));
         Password.setHintTextColor(getResources().getColor(R.color.white));
 
-        Info.setText("No of attempts remaining: 5");
+        //Info.setText("No of attempts remaining: 5");
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
@@ -125,7 +128,8 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     counter--;
-                    Info.setText("No of attempts remaining: " + counter);
+                    Toast.makeText(LoginActivity.this, "No of attempts remaining: " + counter, Toast.LENGTH_SHORT).show();
+                    //Info.setText("No of attempts remaining: " + counter);
                     progressDialog.dismiss();
                     if(counter == 0){
                         Login.setEnabled(false);

@@ -89,7 +89,7 @@ public class RegistrationActivity extends AppCompatActivity {
         userMatric = findViewById(R.id.etMatric);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
-        userProfilePic = findViewById(R.id.ivProfile);
+        //userProfilePic = findViewById(R.id.ivProfile);
 
         userName.setHintTextColor(getResources().getColor(R.color.white));
         userPassword.setHintTextColor(getResources().getColor(R.color.white));

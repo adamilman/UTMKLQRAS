@@ -7,14 +7,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,13 +35,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+
 public class ProfileStudentActivity extends AppCompatActivity {
 
     private ImageView profilePic;
     private TextView profileName, profileMatric, profileEmail;
-    private Button profileUpdate, changePassword;
+    private Button changePassword;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    private Spinner EditType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +60,43 @@ public class ProfileStudentActivity extends AppCompatActivity {
         profileName = findViewById(R.id.tvProfileName);
         profileMatric= findViewById(R.id.tvProfileMatric);
         profileEmail = findViewById(R.id.tvProfileEmail);
-        profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
+        EditType = findViewById(R.id.spnrEditType);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_spinner, getResources().getStringArray(R.array.edittype));
+
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+        EditType.setAdapter(adapter);
+
+        EditType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedItem = EditType.getItemAtPosition(position).toString();
+
+                if(EditType.getItemAtPosition(position).equals("EDIT")) {
+                }
+
+                else {
+                    if (EditType.getItemAtPosition(position).equals("EDIT PROFILE PICTURE")) {
+                        Intent intent = new Intent(ProfileStudentActivity.this, UpdatePictureStudentActivity.class);
+                        startActivity(intent);
+                    } else if (EditType.getItemAtPosition(position).equals("EDIT PROFILE INFORMATION")) {
+                        Intent intent = new Intent(ProfileStudentActivity.this, UpdateProfileStudentActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -98,13 +139,6 @@ public class ProfileStudentActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError error) {
                 Toast.makeText(ProfileStudentActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
 
-            }
-        });
-
-        profileUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileStudentActivity.this, UpdateProfileStudentActivity.class));
             }
         });
 

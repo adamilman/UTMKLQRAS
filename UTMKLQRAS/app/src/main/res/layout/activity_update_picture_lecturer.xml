@@ -5,47 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".UpdatePasswordActivity">
+    tools:context=".UpdatePictureLecturerActivity">
 
-    <EditText
-        android:id="@+id/etNewPassword"
-        android:layout_width="336dp"
-        android:layout_height="54dp"
-        android:background="@drawable/input_shape"
-        android:ems="10"
-        android:hint="New Password"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnUpdatePassword"
+    <ImageView
+        android:id="@+id/ivProfileUpdate"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:src="@drawable/userpng"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.325" />
 
     <Button
-        android:id="@+id/btnUpdatePassword"
+        android:id="@+id/btnSavePic"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/btn_shape"
-        android:text="Update"
-        android:textColor="@color/white"
+        android:text="Save"
         android:textSize="16sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.67" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="336dp"
         android:layout_height="54dp"
-        android:text="Please enter your new password"
+        android:text="Tap the profile picture to insert a new one"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,5 +48,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087"
         android:gravity="center_horizontal" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

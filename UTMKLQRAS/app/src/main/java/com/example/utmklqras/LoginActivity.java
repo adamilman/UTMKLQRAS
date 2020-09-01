@@ -1,19 +1,14 @@
 package com.example.utmklqras;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,58 +17,42 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText Name;
     private EditText Password;
-    private TextView Info;
     private Button Login;
     private int counter = 5;
     private TextView userRegistration;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private TextView forgotPassword;
-    private Spinner UserType;
-
-    boolean isValid = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ActionBar actionBar = getSupportActionBar();
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();}
 
         Name = (EditText)findViewById(R.id.etName);
         Password = (EditText)findViewById(R.id.etPasswordEmail);
-        //Info = (TextView)findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
         userRegistration = (TextView)findViewById(R.id.tvRegister);
         forgotPassword = findViewById(R.id.tvForgotPassword);
-        UserType = findViewById(R.id.spnrUserType);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_mainspinner, getResources().getStringArray(R.array.usertype));
-
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
-        UserType.setAdapter(adapter);
 
         Name.setHintTextColor(getResources().getColor(R.color.white));
         Password.setHintTextColor(getResources().getColor(R.color.white));
 
-        //Info.setText("No of attempts remaining: 5");
-
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        if(user != null){
-            finish();
-            startActivity(new Intent(LoginActivity.this, HomePageAdminActivity.class));
-        }
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,44 +71,55 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, PasswordActivity.class ));
+                startActivity(new Intent(LoginActivity.this, PasswordActivity.class));
             }
         });
     }
 
     private void validate(String userName, String userPassword){
+        firebaseAuth = FirebaseAuth.getInstance();
 
         progressDialog.setMessage("Welcome to UTMKLQRAS");
         progressDialog.show();
 
-        firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(userName, userPassword)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
-                    //Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     checkEmailVerification();
-                    String item = UserType.getSelectedItem().toString();
-                    if (item.equals("Admin")) {
-                        Intent intent = new Intent(LoginActivity.this, HomePageAdminActivity.class);
-                        startActivity(intent);
-                    } else if (item.equals("Lecturer")) {
-                        Intent intent = new Intent(LoginActivity.this, HomePageLecturerActivity.class);
-                        startActivity(intent);
-                    } else if (item.equals("Student")) {
-                        Intent intent = new Intent(LoginActivity.this, HomePageStudentActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
+
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Users");
+                    DatabaseReference uidRef = rootRef.child(uid);
+
+                    uidRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String ut = snapshot.child("userType").getValue(String.class);
+                                    //UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
+                                if (ut.equals("Admin")) {
+                                    startActivity(new Intent(LoginActivity.this, HomePageAdminActivity.class));
+                                } else if (ut.equals("Lecturer")) {
+                                    startActivity(new Intent(LoginActivity.this, HomePageLecturerActivity.class));
+                                } else if (ut.equals("Student")) {
+                                    startActivity(new Intent(LoginActivity.this, HomePageStudentActivity.class));
+                                } else
+                                    Toast.makeText(LoginActivity.this, "gg ", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(LoginActivity.this, "ggggggg ", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
-                else{
+                else {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     counter--;
                     Toast.makeText(LoginActivity.this, "No of attempts remaining: " + counter, Toast.LENGTH_SHORT).show();
-                    //Info.setText("No of attempts remaining: " + counter);
                     progressDialog.dismiss();
                     if(counter == 0){
                         Login.setEnabled(false);
@@ -142,8 +132,6 @@ public class LoginActivity extends AppCompatActivity {
     private void checkEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
         Boolean emailflag = firebaseUser.isEmailVerified();
-
-        //startActivity(new Intent(LoginActivity.this, HomePageActivity.class ));
 
         if(emailflag){
             finish();

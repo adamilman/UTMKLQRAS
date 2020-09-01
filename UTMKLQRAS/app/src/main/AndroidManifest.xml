@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdatePictureStudentActivity"></activity>
+        <activity android:name=".UpdatePictureStudentActivity" />
         <activity android:name=".UpdatePictureLecturerActivity" />
         <activity android:name=".UpdatePictureAdminActivity" />
         <activity android:name=".UpdateProfileStudentActivity" />
@@ -18,12 +18,12 @@
         <activity android:name=".ProfileLecturerActivity" />
         <activity android:name=".HomePageStudentActivity" />
         <activity android:name=".HomePageLecturerActivity" />
+        <activity android:name=".HomePageAdminActivity" />
         <activity android:name=".UpdatePasswordActivity" />
         <activity android:name=".UpdateProfileAdminActivity" />
         <activity android:name=".ProfileAdminActivity" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".HomePageAdminActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".ProgressActivity"

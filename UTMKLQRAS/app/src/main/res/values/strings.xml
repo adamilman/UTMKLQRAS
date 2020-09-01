@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">UTMKLQRAS</string>
-    <string-array name="usertype">
-        <item><font fgcolor="#000000">User Type</font></item>
-        <item><font fgcolor="#ffffff">Admin</font></item>
-        <item><font fgcolor="#ffffff">Lecturer</font></item>
-        <item><font fgcolor="#ffffff">Student</font></item>
-    </string-array>
-
     <string-array name="edittype">
         <item><font fgcolor="#000000">EDIT</font></item>
         <item><font fgcolor="#ffffff">EDIT PROFILE PICTURE</font></item>

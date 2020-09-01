@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,23 +20,34 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword, userEmail, userMatric;
+    private EditText userName, userPassword, userEmail, userMatric, userType;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
-    private ImageView userProfilePic;
-    String email, name, matric, password;
+    //private ImageView userProfilePic;
+    //private Spinner UserType;
+    String email, name, matric, password, type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         setupUIViews();
+
+        //UserType = findViewById(R.id.spnrUserType);
+
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_mainspinner, getResources().getStringArray(R.array.usertype));
+
+        //adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+        //UserType.setAdapter(adapter);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -59,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             if(task.isSuccessful()) {
                                 sendEmailVerification();
                                 sendUserData();
-                                Toast.makeText(RegistrationActivity.this, "Succesfully Registered, Upload Completed!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, "Succesfully Registered!", Toast.LENGTH_SHORT).show();
                                 //firebaseAuth.signOut();
                                 finish();
                                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
@@ -87,6 +100,7 @@ public class RegistrationActivity extends AppCompatActivity {
         userPassword = findViewById(R.id.etUserPassword);
         userEmail = findViewById(R.id.etUserEmail);
         userMatric = findViewById(R.id.etMatric);
+        userType = findViewById(R.id.etType);
         regButton = findViewById(R.id.btnRegister);
         userLogin = findViewById(R.id.tvUserLogin);
         //userProfilePic = findViewById(R.id.ivProfile);
@@ -95,8 +109,7 @@ public class RegistrationActivity extends AppCompatActivity {
         userPassword.setHintTextColor(getResources().getColor(R.color.white));
         userEmail.setHintTextColor(getResources().getColor(R.color.white));
         userMatric.setHintTextColor(getResources().getColor(R.color.white));
-
-
+        userType.setHintTextColor(getResources().getColor(R.color.white));
     }
 
     private Boolean validate() {
@@ -107,8 +120,9 @@ public class RegistrationActivity extends AppCompatActivity {
         password = userPassword.getText().toString();
         email = userEmail.getText().toString();
         matric = userMatric.getText().toString();
+        type = userType.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || matric.isEmpty()) {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || matric.isEmpty() || type.isEmpty()) {
 
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
@@ -141,10 +155,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfileActivity userProfile = new UserProfileActivity(matric, email, name);
-        myRef.setValue(userProfile);
+        DatabaseReference myRef = firebaseDatabase.getReference("Users");
+        UserProfileActivity userProfile = new UserProfileActivity(matric, email, name, password, type);
+        myRef.child(firebaseAuth.getUid()).setValue(userProfile);
     }
-
 }
 

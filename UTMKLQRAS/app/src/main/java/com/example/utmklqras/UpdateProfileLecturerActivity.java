@@ -36,8 +36,8 @@ import java.io.IOException;
 
 public class UpdateProfileLecturerActivity extends AppCompatActivity {
 
-    private EditText newUserName, newUserEmail, newUserMatric;
-    private Button save, savePic;
+    private EditText newUserName, newUserEmail, newUserMatric, newUserPassword, newUserType;
+    private Button save;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseUser firebaseUser;
@@ -58,12 +58,16 @@ public class UpdateProfileLecturerActivity extends AppCompatActivity {
         newUserName = findViewById(R.id.etNameUpdate);
         newUserEmail = findViewById(R.id.etEmailUpdate);
         newUserMatric = findViewById(R.id.etMatricUpdate);
+        newUserPassword = findViewById(R.id.etPasswordUpdate);
+        newUserType = findViewById(R.id.etTypeUpdate);
         save = findViewById(R.id.btnSave);
         progressDialog = new ProgressDialog(this);
 
         newUserName.setHintTextColor(getResources().getColor(R.color.white));
         newUserEmail.setHintTextColor(getResources().getColor(R.color.white));
         newUserMatric.setHintTextColor(getResources().getColor(R.color.white));
+        newUserPassword.setHintTextColor(getResources().getColor(R.color.white));
+        newUserType.setHintTextColor(getResources().getColor(R.color.white));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -72,7 +76,7 @@ public class UpdateProfileLecturerActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        final DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
+        final DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
         storageReference = firebaseStorage.getReference();
 
@@ -80,26 +84,29 @@ public class UpdateProfileLecturerActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 UserProfileActivity userProfile = snapshot.getValue(UserProfileActivity.class);
-                newUserName.setText(userProfile.getUserName());
                 newUserEmail.setText(userProfile.getUserEmail());
+                newUserType.setText(userProfile.getUserType());
+                newUserPassword.setText(userProfile.getUserPassword());
+                newUserName.setText(userProfile.getUserName());
                 newUserMatric.setText(userProfile.getUserMatric());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UpdateProfileLecturerActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
-
             }
         });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = newUserEmail.getText().toString();
+                String type = newUserType.getText().toString();
+                String password = newUserPassword.getText().toString();
                 String name = newUserName.getText().toString();
                 String matric = newUserMatric.getText().toString();
-                String email = newUserEmail.getText().toString();
 
-                UserProfileActivity userProfile = new UserProfileActivity(matric, email, name);
+                UserProfileActivity userProfile = new UserProfileActivity(email, type, password, name, matric);
 
                 databaseReference.setValue(userProfile);
                 Toast.makeText(UpdateProfileLecturerActivity.this,"Updated Successfully!", Toast.LENGTH_SHORT).show();

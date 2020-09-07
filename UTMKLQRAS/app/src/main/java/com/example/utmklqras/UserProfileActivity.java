@@ -1,11 +1,20 @@
 package com.example.utmklqras;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.security.acl.LastOwnerException;
+
 public class UserProfileActivity {
     public String userEmail;
     public String userType;
     public String userPassword;
     public String userName;
     public String userMatric;
+    private LayoutInflater inflater;
+    private Context context;
 
     public UserProfileActivity(){
     }
@@ -58,8 +67,7 @@ public class UserProfileActivity {
         this.userType = userType;
     }
 
-    //@Override
-    //public String toString(){
-    //    return userEmail + " \n" + userName + " \n" + userMatric + " \n" + userPassword + " \n" + userType;
-    //}
+    public String toString(){
+        return userEmail + " \n" + userName + " \n" + userMatric + " \n" + userPassword + " \n" + userType;
+    }
 }

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserDataActivity"></activity>
         <activity android:name=".UpdatePictureStudentActivity" />
         <activity android:name=".UpdatePictureLecturerActivity" />
         <activity android:name=".UpdatePictureAdminActivity" />

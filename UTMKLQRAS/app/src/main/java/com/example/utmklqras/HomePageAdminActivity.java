@@ -7,7 +7,6 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,8 +32,8 @@ public class HomePageAdminActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private Button logout;
-    TextView month, day, masa, textView5;
-    CardView myProfile, listData;
+    TextView textView5;
+    CardView myProfile, listData, clock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +45,6 @@ public class HomePageAdminActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
         }
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        String thistime = format.format(calendar.getTime());
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -58,24 +53,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
         myProfile = findViewById(R.id.myProfile);
         listData = findViewById(R.id.listData);
         textView5 = findViewById(R.id.textView5);
-        month = findViewById(R.id.month);
-        day = findViewById(R.id.day);
-        masa = findViewById(R.id.time);
-
-        Date currentTime = Calendar.getInstance().getTime();
-        String formattedDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime);
-
-        String[] splitDate = formattedDate.split(",");
-
-        Log.d("myLOG", currentTime.toString());
-        Log.d("myLOG", formattedDate);
-
-        month.setText(splitDate[1]);
-        day.setText(splitDate[0]);
-        masa.setText(thistime);
-
-        Log.d("myLOG", splitDate[0].trim());
-        Log.d("myLOG", splitDate[1].trim());
+        clock = findViewById(R.id.clock);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,7 +78,14 @@ public class HomePageAdminActivity extends AppCompatActivity {
         listData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePageAdminActivity.this, UserDataActivity.class));
+                startActivity(new Intent(HomePageAdminActivity.this, UserDataAdminActivity.class));
+            }
+        });
+
+        clock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePageAdminActivity.this, ClockActivity.class));
             }
         });
     }

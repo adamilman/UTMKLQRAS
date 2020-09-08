@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/back"
-    tools:context=".UserDataActivity">
+    tools:context=".UserDataAdminActivity">
 
     <ListView
         android:id="@+id/listview"

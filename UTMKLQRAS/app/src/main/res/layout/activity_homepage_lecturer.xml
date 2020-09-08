@@ -7,53 +7,6 @@
     android:background="@drawable/back"
     tools:context=".HomePageLecturerActivity">
 
-    <TextView
-        android:id="@+id/day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/contrail_one"
-        android:hint="Day"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
-
-    <TextView
-        android:id="@+id/month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/contrail_one"
-        android:hint="Month"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/contrail_one"
-        android:hint="Time"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
-
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
@@ -142,7 +95,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/event"
+            android:id="@+id/clock"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_rowWeight="1"
@@ -164,14 +117,14 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:src="@drawable/eventicon" />
+                    android:src="@drawable/clockicon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="EVENT"
+                    android:text="CLOCK"
                     android:textColor="#6f6f6f"
                     android:textSize="20sp"
                     android:textStyle="bold" />

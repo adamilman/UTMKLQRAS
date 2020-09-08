@@ -8,30 +8,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserDataActivity extends AppCompatActivity {
+public class UserDataAdminActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapter;
@@ -39,7 +39,7 @@ public class UserDataActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_data);
+        setContentView(R.layout.activity_user_data_admin);
 
         EditText theFilter = (EditText) findViewById(R.id.searchFilter);
         theFilter.setHintTextColor(getResources().getColor(R.color.white));
@@ -49,6 +49,9 @@ public class UserDataActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
         }
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         listView = (ListView)findViewById(R.id.listview);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList){
@@ -103,7 +106,7 @@ public class UserDataActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (UserDataActivity.this).arrayAdapter.getFilter().filter(s);
+                (UserDataAdminActivity.this).arrayAdapter.getFilter().filter(s);
             }
 
             @Override
@@ -111,5 +114,36 @@ public class UserDataActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_admin, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuprofile:
+                startActivity(new Intent(UserDataAdminActivity.this, ProfileAdminActivity.class));
+                return true;
+            case R.id.menulogout:{
+                Logout();
+            }
+            case R.id.menuhomepageadmin:
+                startActivity(new Intent(UserDataAdminActivity.this, HomePageAdminActivity.class));
+                return true;
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void Logout(){
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(UserDataAdminActivity.this, LoginActivity.class));
     }
 }

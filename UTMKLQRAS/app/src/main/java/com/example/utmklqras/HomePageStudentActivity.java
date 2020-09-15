@@ -34,6 +34,7 @@ public class HomePageStudentActivity extends AppCompatActivity {
     private Button logout;
     TextView textView5;
     CardView myProfile, listData, clock;
+    public static CardView qr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class HomePageStudentActivity extends AppCompatActivity {
         listData = findViewById(R.id.listData);
         textView5 = findViewById(R.id.textView5);
         clock = findViewById(R.id.clock);
+        qr = findViewById(R.id.qr);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,6 +88,13 @@ public class HomePageStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomePageStudentActivity.this, ClockActivity.class));
+            }
+        });
+
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePageStudentActivity.this, QRActivity.class));
             }
         });
     }

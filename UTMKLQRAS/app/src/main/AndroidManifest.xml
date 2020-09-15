@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.utmklqras">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_homeicon"
@@ -9,7 +16,8 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClockActivity"></activity>
+        <activity android:name=".QRActivity"></activity>
+        <activity android:name=".ClockActivity" />
         <activity android:name=".UserDataStudentActivity" />
         <activity android:name=".UserDataLecturerActivity" />
         <activity android:name=".UserDataAdminActivity" />

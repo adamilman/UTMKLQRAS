@@ -89,8 +89,8 @@
                     android:layout_marginTop="10dp"
                     android:text="DATA LIST"
                     android:textColor="#6f6f6f"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -161,9 +161,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="SCAN QR"
+                    android:text="GENERATE QR"
                     android:textColor="#6f6f6f"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -175,7 +175,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome, UTMKL Lecturer"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gridLayout"
         app:layout_constraintHorizontal_bias="0.127"
@@ -190,7 +190,7 @@
         android:hint="User"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gridLayout"
         app:layout_constraintHorizontal_bias="0.079"

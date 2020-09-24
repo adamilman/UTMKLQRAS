@@ -73,7 +73,8 @@ public class UserDataLecturerActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 String value = snapshot.getValue(UserProfileActivity.class).toString();
-                arrayList.add(value);
+                UserProfileActivity user = snapshot.getValue(UserProfileActivity.class);
+                arrayList.add(value + "\n" + user.getStatus());
                 arrayAdapter.notifyDataSetChanged();
             }
 

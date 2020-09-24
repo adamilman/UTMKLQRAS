@@ -33,7 +33,7 @@ public class HomePageLecturerActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private Button logout;
     TextView textView5;
-    CardView myProfile, listData, clock;
+    CardView myProfile, listData, clock, qr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class HomePageLecturerActivity extends AppCompatActivity {
         listData = findViewById(R.id.listData);
         textView5 = findViewById(R.id.textView5);
         clock = findViewById(R.id.clock);
+        qr = findViewById(R.id.qr);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,6 +87,13 @@ public class HomePageLecturerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomePageLecturerActivity.this, ClockActivity.class));
+            }
+        });
+
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePageLecturerActivity.this, QRGeneratorActivity.class));
             }
         });
     }

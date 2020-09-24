@@ -21,17 +21,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class UserDataStudentActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapter;
@@ -40,9 +43,6 @@ public class UserDataStudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data_student);
-
-        EditText theFilter = (EditText) findViewById(R.id.searchFilter);
-        theFilter.setHintTextColor(getResources().getColor(R.color.white));
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -69,48 +69,18 @@ public class UserDataStudentActivity extends AppCompatActivity {
 
         };
         listView.setAdapter(arrayAdapter);
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        databaseReference.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
+
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(UserProfileActivity.class).toString();
-                arrayList.add(value);
+                UserProfileActivity user = snapshot.getValue(UserProfileActivity.class);
+                arrayList.add(value + "\n" + user.getStatus());
                 arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        theFilter.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (UserDataStudentActivity.this).arrayAdapter.getFilter().filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
 
             }
         });

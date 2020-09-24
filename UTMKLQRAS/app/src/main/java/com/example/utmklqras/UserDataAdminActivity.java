@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -26,8 +27,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class UserDataAdminActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
@@ -52,7 +55,6 @@ public class UserDataAdminActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         listView = (ListView)findViewById(R.id.listview);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList){
 
@@ -69,11 +71,15 @@ public class UserDataAdminActivity extends AppCompatActivity {
 
     };
         listView.setAdapter(arrayAdapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 String value = snapshot.getValue(UserProfileActivity.class).toString();
-                arrayList.add(value);
+                UserProfileActivity user = snapshot.getValue(UserProfileActivity.class);
+                arrayList.add(value + "\n" + user.getStatus());
                 arrayAdapter.notifyDataSetChanged();
             }
 

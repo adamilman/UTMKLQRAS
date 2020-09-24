@@ -1,6 +1,7 @@
 package com.example.utmklqras;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ public class UserProfileActivity {
     public String userPassword;
     public String userName;
     public String userMatric;
+    private String Status;
     private LayoutInflater inflater;
     private Context context;
 
@@ -65,6 +67,14 @@ public class UserProfileActivity {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
 
     public String toString(){

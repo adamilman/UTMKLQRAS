@@ -59,7 +59,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/listData"
-            android:layout_width="wrap_content"
+            android:layout_width="122dp"
             android:layout_height="200dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
@@ -68,7 +68,7 @@
             app:cardElevation="6dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
@@ -83,13 +83,14 @@
                     android:src="@drawable/dataicon" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="DATA LIST"
+                    android:text="ATTENDANCE"
+                    android:textAlignment="center"
                     android:textColor="#6f6f6f"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -133,7 +134,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/qr"
-            android:layout_width="wrap_content"
+            android:layout_width="14dp"
             android:layout_height="200dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
@@ -161,9 +162,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="GENERATE QR"
+                    android:text="GENERATE\nQR"
+                    android:textAlignment="center"
                     android:textColor="#6f6f6f"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -178,10 +180,10 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.039" />
 
     <TextView
         android:id="@+id/textView5"
@@ -193,8 +195,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

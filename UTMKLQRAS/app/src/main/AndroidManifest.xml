@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QRActivity"></activity>
+        <activity android:name=".QRGeneratorActivity"></activity>
+        <activity android:name=".QRActivity" />
         <activity android:name=".ClockActivity" />
         <activity android:name=".UserDataStudentActivity" />
         <activity android:name=".UserDataLecturerActivity" />

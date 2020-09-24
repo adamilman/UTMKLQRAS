@@ -65,7 +65,7 @@
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="Matric Number"
+        android:hint="Matric Number / Staff ID"
         android:inputType="text"
         android:padding="15dp"
         android:textColor="@android:color/white"

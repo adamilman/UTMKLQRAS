@@ -117,7 +117,7 @@
         android:layout_height="54dp"
         android:background="@drawable/input_shape"
         android:ems="10"
-        android:hint="User Type"
+        android:hint="User Type e.g Admin, Lecturer, Student"
         android:inputType="text"
         android:padding="15dp"
         android:textColor="@android:color/white"

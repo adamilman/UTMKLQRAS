@@ -34,12 +34,11 @@ import com.google.firebase.storage.StorageReference;
 
 public class ProfileLecturerActivity extends AppCompatActivity {
 
-    private ImageView profilePic;
+    private ImageView profilePic, iconEditPicture;
     private TextView profileName, profileMatric, profileEmail;
-    private Button changePassword;
+    private Button changePassword, editInfo;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
-    private Spinner EditType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,39 +55,10 @@ public class ProfileLecturerActivity extends AppCompatActivity {
         profileMatric= findViewById(R.id.tvProfileMatric);
         profileEmail = findViewById(R.id.tvProfileEmail);
         changePassword = findViewById(R.id.btnChangePassword);
-        EditType = findViewById(R.id.spnrEditType);
+        editInfo = findViewById(R.id.btnEditInfo);
+        iconEditPicture = findViewById(R.id.iconEditPicture);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_spinner, getResources().getStringArray(R.array.edittype));
-
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
-        EditType.setAdapter(adapter);
-
-        EditType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                if(EditType.getItemAtPosition(position).equals("EDIT")) {
-                }
-
-                else {
-                    if (EditType.getItemAtPosition(position).equals("EDIT PROFILE PICTURE")) {
-                        Intent intent = new Intent(ProfileLecturerActivity.this, UpdatePictureLecturerActivity.class);
-                        startActivity(intent);
-                    } else if (EditType.getItemAtPosition(position).equals("EDIT PROFILE INFORMATION")) {
-                        Intent intent = new Intent(ProfileLecturerActivity.this, UpdateProfileLecturerActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "An error occured. Please restart the application", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -130,10 +100,24 @@ public class ProfileLecturerActivity extends AppCompatActivity {
             }
         });
 
+        editInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileLecturerActivity.this, UpdateProfileLecturerActivity.class));
+            }
+        });
+
         changePassword.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 startActivity(new Intent(ProfileLecturerActivity.this, UpdatePasswordActivity.class));
+            }
+        });
+
+        iconEditPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileLecturerActivity.this, UpdatePictureLecturerActivity.class));
             }
         });
     }

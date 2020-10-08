@@ -15,6 +15,7 @@ public class UserProfileActivity {
     public String userName;
     public String userMatric;
     private String Status;
+    private String SubjectScanned;
     private LayoutInflater inflater;
     private Context context;
 
@@ -75,6 +76,14 @@ public class UserProfileActivity {
 
     public void setStatus(String Status) {
         this.Status = Status;
+    }
+
+    public String getSubjectScanned() {
+        return SubjectScanned;
+    }
+
+    public void setSubjectScanned(String SubjectScanned) {
+        this.SubjectScanned = SubjectScanned;
     }
 
     public String toString(){

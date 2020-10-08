@@ -32,17 +32,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class UserDataStudentActivity extends AppCompatActivity {
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReferencezzz;
     private FirebaseAuth firebaseAuth;
 
-    ListView listView;
-    ArrayList<String> arrayList = new ArrayList<>();
-    private ArrayAdapter<String> arrayAdapter;
+    private TextView historystatus, historysubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data_student);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -51,32 +51,16 @@ public class UserDataStudentActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        historystatus = findViewById(R.id.historystatus);
+        historysubject = findViewById(R.id.historysubject);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        listView = (ListView)findViewById(R.id.listview);
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList){
-
-            public View getView(int position, View convertView, ViewGroup parent){
-
-                View view = super.getView(position, convertView, parent);
-
-                TextView ListItemShow = (TextView) view.findViewById(android.R.id.text1);
-
-                ListItemShow.setTextColor(Color.parseColor("#FFFFFF"));
-
-                return view;
-            }
-
-        };
-        listView.setAdapter(arrayAdapter);
         databaseReference.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(UserProfileActivity.class).toString();
                 UserProfileActivity user = snapshot.getValue(UserProfileActivity.class);
-                arrayList.add(value + "\n" + user.getStatus());
-                arrayAdapter.notifyDataSetChanged();
+                historystatus.setText(user.getStatus());
+                historysubject.setText(user.getSubjectScanned());
             }
 
             @Override

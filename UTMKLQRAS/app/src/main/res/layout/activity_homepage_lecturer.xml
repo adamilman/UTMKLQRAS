@@ -17,8 +17,10 @@
         android:rowCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/myProfile"
@@ -68,7 +70,7 @@
             app:cardElevation="6dp">
 
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
@@ -83,7 +85,7 @@
                     android:src="@drawable/dataicon" />
 
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
@@ -158,11 +160,11 @@
                     android:src="@drawable/qricon" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="GENERATE\nQR"
+                    android:text="GENERATE QR"
                     android:textAlignment="center"
                     android:textColor="#6f6f6f"
                     android:textSize="20sp"
@@ -171,32 +173,87 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome, UTMKL Lecturer"
-        android:textColor="@color/white"
-        android:textSize="22sp"
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="121dp"
+        android:layout_height="112dp"
+        android:src="@drawable/userpng"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.046" />
+
+    <ImageView
+        android:id="@+id/ivProfilePic2"
+        android:layout_width="387dp"
+        android:layout_height="26dp"
+        android:src="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:hint="User"
+        android:text="Name"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.041" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Matric"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copyright © 2020 G05_UTMKLQRAS"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 </androidx.constraintlayout.widget.ConstraintLayout>

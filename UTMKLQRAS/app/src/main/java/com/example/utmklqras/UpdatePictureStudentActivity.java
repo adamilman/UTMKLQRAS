@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -148,12 +150,34 @@ public class UpdatePictureStudentActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_student, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+            case R.id.menuhomepagestudent:
+                startActivity(new Intent(UpdatePictureStudentActivity.this, HomePageStudentActivity.class));
+                return true;
+            case R.id.menuprofile:
+                startActivity(new Intent(UpdatePictureStudentActivity.this, ProfileStudentActivity.class));
+                return true;
+            case R.id.menulogout:{
+                Logout();
+            }
             case android.R.id.home:
                 onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void Logout(){
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(UpdatePictureStudentActivity.this, LoginActivity.class));
     }
 }

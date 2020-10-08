@@ -1,8 +1,3 @@
 <resources>
     <string name="app_name">UTMKLQRAS</string>
-    <string-array name="edittype">
-        <item><font fgcolor="#000000">EDIT</font></item>
-        <item><font fgcolor="#ffffff">EDIT PROFILE PICTURE</font></item>
-        <item><font fgcolor="#ffffff">EDIT PROFILE INFORMATION</font></item>
-    </string-array>
 </resources>

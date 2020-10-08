@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,16 +8,66 @@
     android:background="@drawable/back"
     tools:context=".UserDataStudentActivity">
 
-    <ListView
-        android:id="@+id/listview"
-        android:background="#58616e"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:dividerHeight="20dp"
-        android:divider="#333F50"></ListView>
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="355dp"
+        android:layout_height="118dp"
+        android:gravity="center_horizontal"
+        android:text="Today's\nAttendance"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/historystatus"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/input_shape"
+        android:ems="10"
+        android:padding="15dp"
+        android:textColor="#FFFFFFFF"
+        android:textSize="16sp"
+        android:hint="Not Scanned"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722" />
+
+    <TextView
+        android:id="@+id/historysubject"
+        android:layout_width="336dp"
+        android:layout_height="54dp"
+        android:background="@drawable/input_shape"
+        android:ems="10"
+        android:padding="15dp"
+        android:textColor="#FFFFFFFF"
+        android:textSize="16sp"
+        android:hint="No Subject Found"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.855" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="279dp"
+        android:layout_height="174dp"
+        android:src="@drawable/attend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

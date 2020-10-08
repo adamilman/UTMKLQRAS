@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +57,8 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
         }
 
+        Toast.makeText(UpdateProfileStudentActivity.this,"Can only update name and matric number", Toast.LENGTH_LONG).show();
+
         newUserName = findViewById(R.id.etNameUpdate);
         newUserEmail = findViewById(R.id.etEmailUpdate);
         newUserMatric = findViewById(R.id.etMatricUpdate);
@@ -75,6 +79,8 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        //final boolean disabled = true;
 
         final DatabaseReference databaseReference = firebaseDatabase.getReference("Users").child(firebaseAuth.getUid());
 
@@ -102,13 +108,14 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = newUserEmail.getText().toString();
                 String type = newUserType.getText().toString();
-                String password = newUserPassword.getText().toString();
                 String name = newUserName.getText().toString();
                 String matric = newUserMatric.getText().toString();
+                String password = newUserPassword.getText().toString();
 
                 UserProfileActivity userProfile = new UserProfileActivity(email, type, password, name, matric);
 
                 databaseReference.setValue(userProfile);
+                //newUserPassword.setText(ValueuserProfile.getUserPassword());
                 Toast.makeText(UpdateProfileStudentActivity.this,"Updated Successfully!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(UpdateProfileStudentActivity.this, ProfileStudentActivity.class));
             }
@@ -116,12 +123,34 @@ public class UpdateProfileStudentActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_student, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+            case R.id.menuhomepagestudent:
+                startActivity(new Intent(UpdateProfileStudentActivity.this, HomePageStudentActivity.class));
+                return true;
+            case R.id.menuprofile:
+                startActivity(new Intent(UpdateProfileStudentActivity.this, ProfileStudentActivity.class));
+                return true;
+            case R.id.menulogout:{
+                Logout();
+            }
             case android.R.id.home:
                 onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void Logout(){
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(UpdateProfileStudentActivity.this, LoginActivity.class));
     }
 }

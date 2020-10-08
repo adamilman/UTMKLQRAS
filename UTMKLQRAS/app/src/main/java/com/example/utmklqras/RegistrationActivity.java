@@ -78,7 +78,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                             }
                             else{
-                                Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, "Registration failed, the email has been registered", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -159,5 +159,25 @@ public class RegistrationActivity extends AppCompatActivity {
         UserProfileActivity userProfile = new UserProfileActivity(email, type, password, name, matric);
         myRef.child(firebaseAuth.getUid()).setValue(userProfile);
     }
+
+    //public void computeMD5Hash(String password){
+        //try {
+            //MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            //digest.update(password.getBytes());
+            //byte messageDigest[] = digest.digest();
+
+            //StringBuffer MD5Hash = new StringBuffer();
+            //for (int i = 0; i < messageDigest.length; i++){
+                //String h = Integer.toHexString(0xFF & messageDigest[i]);
+                //while (h.length() < 2)
+                    //h = "0" + h;
+                //MD5Hash.append(h);
+            //}
+            //result.setText(MD5Hash);
+        //}
+        //catch (NoSuchAlgorithmException e){
+            //e.printStackTrace();
+        //}
+    //}
 }
 

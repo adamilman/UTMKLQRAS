@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menuprofile"
-        android:orderInCategory="100"
-        android:title="My Profile"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/menuhomepagelecturer"
         android:orderInCategory="100"
-        app:showAsAction="never"
+        android:icon="@drawable/homeicon"
+        app:showAsAction="always"
         android:title="Homepage"/>
+
+    <item
+        android:id="@+id/menuprofile"
+        android:orderInCategory="100"
+        android:icon="@drawable/profileicon"
+        android:title="My Profile"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/menulogout"
         android:orderInCategory="100"
-        app:showAsAction="never"
+        android:icon="@drawable/logouticon"
+        app:showAsAction="always"
         android:title="Logout"/>
 
 </menu>

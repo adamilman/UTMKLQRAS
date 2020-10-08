@@ -65,16 +65,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.709" />
 
-    <Spinner
-        android:id="@+id/spnrEditType"
+    <Button
+        android:id="@+id/btnEditInfo"
         android:layout_width="336dp"
         android:layout_height="54dp"
         android:background="@drawable/btn_shape"
         android:padding="15dp"
-        android:entries="@array/edittype"
+        android:text="EDIT PROFILE INFORMATION"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:spinnerMode="dialog"
-        android:popupBackground="#2f2f2f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -96,4 +95,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.958" />
+
+    <ImageView
+        android:id="@+id/iconEditPicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_add_a_photo_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

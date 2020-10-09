@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,8 @@ public class PasswordActivity extends AppCompatActivity {
         if(actionBar != null){
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
         }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         passwordEmail = findViewById(R.id.etPasswordEmail);
         resetPassword = findViewById(R.id.btnPasswordReset);
@@ -61,5 +64,13 @@ public class PasswordActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

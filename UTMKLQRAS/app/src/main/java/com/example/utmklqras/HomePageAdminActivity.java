@@ -43,6 +43,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
     TextView textView5, textView6, textView7;
     CardView myProfile, listData, clock, qr;
     private ImageView profilePic;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

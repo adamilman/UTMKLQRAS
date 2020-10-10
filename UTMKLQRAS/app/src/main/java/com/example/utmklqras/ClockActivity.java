@@ -41,6 +41,7 @@ public class ClockActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.mygradient));
         }
 
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         day = findViewById(R.id.day);
